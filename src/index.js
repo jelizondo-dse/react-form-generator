@@ -85,7 +85,7 @@ class FormBuilder extends Component {
             event.preventDefault();
             var dragedFieldClassNames = this.dragedElement.className
 
-            if(this.someElementOfArrayHasClass(event.path,'formBuilderGroup')){
+            if(this.someElementOfArrayHasClass(event.composedPath(),'formBuilderGroup')){
                 //mouse over formbuilder
                 if(dragedFieldClassNames.includes('fieldToDrag')){
                     //field is moving from right bar to generator form
@@ -100,14 +100,14 @@ class FormBuilder extends Component {
                         var allExistingFields = document.querySelectorAll('.elementOFDrag')
 
 
-                        if(this.returnElementOfArrayHasClass(event.path,'elementOFDrag')){
+                        if(this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag')){
                             //position relative to existing fields
 
                             var posAct = 0
 
 
                             for(var item of allExistingFields){
-                                if(item.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.path,'elementOFDrag').getAttribute('data-order-form-builder')){
+                                if(item.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag').getAttribute('data-order-form-builder')){
                                     this.pos = posAct
                                     break
                                 }
@@ -136,13 +136,13 @@ class FormBuilder extends Component {
 
                     //check if actual dragged element is on it self, if yes it won't show placeholder
                     if(
-                        this.returnElementOfArrayHasClass(event.path,'elementOFDrag')
+                        this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag')
                         &&
-                        this.dragedElement.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.path,'elementOFDrag').getAttribute('data-order-form-builder')
+                        this.dragedElement.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag').getAttribute('data-order-form-builder')
                     )
                         return
 
-                    if(this.returnElementOfArrayHasClass(event.path,'elementOFDrag')){
+                    if(this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag')){
                         //position relative to existing fields
                         var posAct = 0;
 
@@ -152,7 +152,7 @@ class FormBuilder extends Component {
                                 //it's element draged over it self
                                 blockAfterElementPlaceholder = posAct
                             }
-                            if(item.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.path,'elementOFDrag').getAttribute('data-order-form-builder')){
+                            if(item.getAttribute('data-order-form-builder') == this.returnElementOfArrayHasClass(event.composedPath(),'elementOFDrag').getAttribute('data-order-form-builder')){
                                 //define position of element on which drag element is over
                                 this.pos = posAct
                             }
