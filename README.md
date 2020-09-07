@@ -96,7 +96,7 @@ jsonload = [
                }
            ]
 
- <FormBuilder jsonLoad={this.jsonload}/>
+ <FormBuilder jsonToLoad={this.jsonload}/>
             
 ```
 ### Pre defined fields
